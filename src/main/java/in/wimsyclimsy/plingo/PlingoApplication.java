@@ -9,5 +9,4 @@ public class PlingoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PlingoApplication.class, args);
 	}
-
 }
