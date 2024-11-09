@@ -20,8 +20,9 @@ public class UserDAO implements IUserDAO{
     }
 
     @Override
-    public void updateUser(String userId, User user) {
+    public CRUDStatus updateUser(String userId, User user) {
         users.put(userId, user) ;
+        return CRUDStatus.APPROVED;
     }
 
     @Override
