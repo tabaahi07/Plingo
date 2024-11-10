@@ -4,6 +4,7 @@ import java.util.Stack;
 
 import in.wimsyclimsy.plingo.commons.User;
 import in.wimsyclimsy.plingo.game.Enums.Card;
+import in.wimsyclimsy.plingo.game.Enums.CardValue;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,4 +15,7 @@ public class Game {
     private List<User> players;
     private Stack<Card> openCards;
     private Stack<Card> closeCards;
+    private CardValue trumpCard;
+
+    
 }

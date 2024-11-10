@@ -1,5 +1,5 @@
 package in.wimsyclimsy.plingo.game.Enums;
-
+import java.util.stream.*;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -17,6 +17,9 @@ public enum CardValue {
     J(11),
     Q(12),
     K(13);
-    @SuppressWarnings("unused")
+
     private int value ;
+    // public static CardValue getCardValue(int value){
+    //     return Stream.of(CardValue.values());
+    // }
 }

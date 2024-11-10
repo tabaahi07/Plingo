@@ -9,7 +9,7 @@ public class RoomInfoResponse {
     List<RoomPlayer> players;
     @Data
     @Builder
-    static class RoomPlayer{
+    public static class RoomPlayer{
         private String userName;
         private String userId;
         private Boolean ready;

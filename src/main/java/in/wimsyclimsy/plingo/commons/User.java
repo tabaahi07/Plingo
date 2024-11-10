@@ -13,5 +13,6 @@ public class User {
     private String userToken;
     private String userName;
     private String roomCode;
+    private Boolean isReady;
     private List<Card> cards;
 }
