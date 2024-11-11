@@ -7,5 +7,6 @@ import lombok.Data;
 @Builder
 
 public class ThrowCardRequest {
+    private String userId;
     private Card thrownCard;
 }

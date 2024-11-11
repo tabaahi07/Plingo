@@ -1,5 +1,6 @@
 package in.wimsyclimsy.plingo.service;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.databind.ser.std.StdArraySerializers.BooleanArraySe
 import in.wimsyclimsy.plingo.commons.GenerateUserResponse;
 import in.wimsyclimsy.plingo.commons.User;
 import in.wimsyclimsy.plingo.commons.Enums.CRUDStatus;
+import in.wimsyclimsy.plingo.dao.Room;
 import in.wimsyclimsy.plingo.dao.RoomDAO;
 import in.wimsyclimsy.plingo.dao.UserDAO;
 import in.wimsyclimsy.plingo.game.Enums.Card;
@@ -73,4 +75,5 @@ public class UserService {
         userDAO.updateUser(userId, updatedUser);
         return CRUDStatus.APPROVED;
     }
+
 }

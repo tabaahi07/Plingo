@@ -40,16 +40,15 @@ public class PlingoEngine implements IPlingoEngine{
         return gameService.getGameInfo(roomCode, userId).get();
     }
 
+    
     @Override
     public void pickCard(String roomCode, PickCardRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'pickCard'");
+        gameService.pickCard(request.getUserId() , roomCode, request.getIsOpen());
     }
 
     @Override
     public void throwCard(String roomCode, ThrowCardRequest request) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'throwCard'");
+        gameService.throwCard(request.getUserId(), roomCode, request.getThrownCard());
     }
 
     @Override

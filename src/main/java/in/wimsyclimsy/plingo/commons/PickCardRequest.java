@@ -6,5 +6,6 @@ import lombok.Data;
 @Data
 @Builder
 public class PickCardRequest {
-    private Boolean isOpen ;
+    private Boolean isOpen;
+    private String userId;
 }
