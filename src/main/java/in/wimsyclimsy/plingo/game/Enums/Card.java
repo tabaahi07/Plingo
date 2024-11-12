@@ -1,7 +1,9 @@
 package in.wimsyclimsy.plingo.game.Enums;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public enum Card {
     DIAMOND_A(1, Suit.DIAMOND, CardValue.A),
     DIAMOND_2(2, Suit.DIAMOND, CardValue._2),

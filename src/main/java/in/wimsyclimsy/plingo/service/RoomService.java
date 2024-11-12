@@ -53,7 +53,7 @@ public class RoomService {
         );
         return CRUDStatus.APPROVED;
     }
-
+    
     public CRUDStatus leaveRoom(String userId , String roomCode){
         Optional<User> user = userDAO.getUser(userId);
         if(user == null) return CRUDStatus.REJECTED;

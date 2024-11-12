@@ -15,4 +15,5 @@ public class User {
     private String roomCode;
     private Boolean isReady;
     private List<Card> cards;
+    private int kickoutCount;
 }

@@ -1,7 +1,5 @@
 package in.wimsyclimsy.plingo.engine;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import in.wimsyclimsy.plingo.commons.GameInfoResponse;
 import in.wimsyclimsy.plingo.commons.PickCardRequest;
 import in.wimsyclimsy.plingo.commons.RoomInfoResponse;
@@ -52,10 +50,10 @@ public class PlingoEngine implements IPlingoEngine{
     }
 
     @Override
-    public CRUDStatus verifyWinner(String roomCode, String userId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'verifyWinner'");
+    public Boolean verifyWinner(String roomCode, String userId) {
+        return gameService.verifyWinner(roomCode, userId);
     }
+    
 
     @Override
     public void kickOut(String roomCode, String userId, String kickoutId) {

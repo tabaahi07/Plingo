@@ -13,6 +13,6 @@ public interface IPlingoEngine {
     public GameInfoResponse getGameInfo(String roomCode, String userId);
     public void pickCard(String roomCode, PickCardRequest request);
     public void throwCard(String roomCode, ThrowCardRequest request);
-    public CRUDStatus verifyWinner(String roomCode, String userId);
+    public Boolean verifyWinner(String roomCode, String userId);
     public void kickOut(String roomCode, String userId, String kickoutId);
 }

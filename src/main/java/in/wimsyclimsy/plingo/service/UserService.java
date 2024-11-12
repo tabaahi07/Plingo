@@ -1,18 +1,12 @@
 package in.wimsyclimsy.plingo.service;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.ser.std.StdArraySerializers.BooleanArraySerializer;
-
 import in.wimsyclimsy.plingo.commons.GenerateUserResponse;
 import in.wimsyclimsy.plingo.commons.User;
 import in.wimsyclimsy.plingo.commons.Enums.CRUDStatus;
-import in.wimsyclimsy.plingo.dao.Room;
 import in.wimsyclimsy.plingo.dao.RoomDAO;
 import in.wimsyclimsy.plingo.dao.UserDAO;
 import in.wimsyclimsy.plingo.game.Enums.Card;
@@ -37,6 +31,7 @@ public class UserService {
                 .userToken(userToken)
                 .roomCode(null)
                 .isReady(false)
+                .kickoutCount(0)
                 .cards(new ArrayList<Card>()).build()
         ) ;
         return GenerateUserResponse.builder().userId(userId).userName(userName).userToken(userToken).build() ;
