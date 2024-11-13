@@ -27,8 +27,9 @@ public class UserDAO implements IUserDAO{
 
     @Override
     public CRUDStatus deleteUser(String userId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
+        if(!users.containsKey(userId)) return CRUDStatus.REJECTED;
+        users.remove(userId);
+        return CRUDStatus.APPROVED;
     }
 
     @Override

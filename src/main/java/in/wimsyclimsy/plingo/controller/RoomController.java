@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import in.wimsyclimsy.plingo.commons.CreateRoomResponse;
 import in.wimsyclimsy.plingo.commons.JoinRoomRequest;
+import in.wimsyclimsy.plingo.commons.Enums.CRUDStatus;
 import in.wimsyclimsy.plingo.service.RoomService;
 
 public class RoomController implements IRoomController{
@@ -16,8 +17,8 @@ public class RoomController implements IRoomController{
     }
 
     @Override
-    public void joinRoom(String userId, JoinRoomRequest request) {
-        roomService.joinRoom(userId, request.getRoomCode());
+    public CRUDStatus joinRoom(String userId, JoinRoomRequest request) {
+        return roomService.joinRoom(userId, request.getRoomCode());
     }
     
 }

@@ -42,32 +42,20 @@ public class UserService {
     public CRUDStatus updateUserName(String userId , String userName){
         Optional<User> currentUser = userDAO.getUser(userId);
         if(currentUser == null) return CRUDStatus.REJECTED;
-        User updatedUser = User.builder()
-                .roomCode(currentUser.get().getRoomCode())
-                .userId(userId)
-                .userName(userName)
-                .userToken(currentUser.get().getUserToken())
-                .cards(currentUser.get().getCards())
-                .isReady(currentUser.get().getIsReady())
-                .build();
-
-        userDAO.updateUser(userId, updatedUser);
+        // updating userName
+        currentUser.get().setUserName(userName);
+        // updating in db
+        userDAO.updateUser(userId, currentUser.get());
         return CRUDStatus.APPROVED;
     }
 
     public CRUDStatus updateReadyStatus(String userId , Boolean status){
         Optional<User> currentUser = userDAO.getUser(userId);
         if(currentUser == null) return CRUDStatus.REJECTED;
-        User updatedUser = User.builder()
-                .roomCode(currentUser.get().getRoomCode())
-                .userId(userId)
-                .userName(currentUser.get().getUserName())
-                .userToken(currentUser.get().getUserToken())
-                .cards(currentUser.get().getCards())
-                .isReady(status)
-                .build();
-
-        userDAO.updateUser(userId, updatedUser);
+        // updating ready status
+        currentUser.get().setIsReady(status);
+        // updating in db
+        userDAO.updateUser(userId, currentUser.get());
         return CRUDStatus.APPROVED;
     }
 

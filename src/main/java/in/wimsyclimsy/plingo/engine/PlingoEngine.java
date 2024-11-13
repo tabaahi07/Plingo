@@ -56,9 +56,8 @@ public class PlingoEngine implements IPlingoEngine{
     
 
     @Override
-    public void kickOut(String roomCode, String userId, String kickoutId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'kickOut'");
+    public CRUDStatus kickOut(String roomCode, String userId, String kickoutId) {
+        return gameService.kickoutUser(roomCode, userId, kickoutId);
     }
 
 }

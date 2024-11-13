@@ -14,5 +14,5 @@ public interface IPlingoEngine {
     public void pickCard(String roomCode, PickCardRequest request);
     public void throwCard(String roomCode, ThrowCardRequest request);
     public Boolean verifyWinner(String roomCode, String userId);
-    public void kickOut(String roomCode, String userId, String kickoutId);
+    public CRUDStatus kickOut(String roomCode, String userId, String kickoutId);
 }

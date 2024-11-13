@@ -56,11 +56,13 @@ public class RoomService {
     
     public CRUDStatus leaveRoom(String userId , String roomCode){
         Optional<User> user = userDAO.getUser(userId);
-        if(user == null) return CRUDStatus.REJECTED;
         Optional<Room> room = roomDAO.getRoom(roomCode);
-        if(room == null) return CRUDStatus.REJECTED;
+        if(user == null || room == null) return CRUDStatus.REJECTED;
 
         List<User> userList = room.get().getUserList();
+        // checking if user is in room or not
+        if(!userList.contains(user.get())) return CRUDStatus.REJECTED;
+        // updating user list of room
         userList.remove(user.get());
         roomDAO.updateRoom(roomCode,
                 Room.builder()

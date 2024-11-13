@@ -25,14 +25,15 @@ public class RoomDAO implements IRoomDAO{
 
     @Override
     public Optional<Room> getRoom(String roomCode) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRoom'");
+        if(!rooms.containsKey(roomCode)) return Optional.empty();
+        return Optional.of(rooms.get(roomCode));
     }
 
     @Override
     public CRUDStatus deleteRoom(String roomCode) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteRoom'");
+        if(!rooms.containsKey(roomCode)) return CRUDStatus.REJECTED;
+        rooms.remove(roomCode);
+        return CRUDStatus.APPROVED;
     }
 
 }

@@ -52,6 +52,9 @@ public class GameService {
         Optional<Room> room = roomDAO.getRoom(roomCode);
         if(user.isEmpty() || room.isEmpty()) return CRUDStatus.REJECTED;
         Card pickedCard ;
+        // removing current user from the room n then we'll add the updated one
+        List<User> roomUserList = room.get().getUserList();
+        roomUserList.remove(user.get());
         // updating game in room
         if(isOpen){
             Stack<Card> openCards = room.get().getGame().getOpenCards();
@@ -66,6 +69,8 @@ public class GameService {
         // updating user
         List<Card> userCards = user.get().getCards();
         userCards.add(pickedCard);
+        // updating user in room
+        roomUserList.add(user.get());
         // udating in db
         userDAO.updateUser(userId, user.get());
         roomDAO.updateRoom(roomCode, room.get());
@@ -76,8 +81,11 @@ public class GameService {
         Optional<User> user = userDAO.getUser(userId);
         Optional<Room> room = roomDAO.getRoom(roomCode);
         if(user.isEmpty() || room.isEmpty()) return CRUDStatus.REJECTED;
-        // updating user
+
         List<Card> userCards = user.get().getCards();
+        // checking if card exist in user CardList or not
+        if(!userCards.contains(thrownCard)) return CRUDStatus.REJECTED;
+         // updating user
         userCards.remove(thrownCard);
         // updating game in room
         Stack<Card> openCards = room.get().getGame().getOpenCards();
@@ -190,7 +198,7 @@ public class GameService {
                     .build());
 
         // If all other members in room approved kickout , then user will leave the room
-        if(kickoutCount == roomDAO.getRoom(roomCode).get().getUserList().size()) roomService.leaveRoom(kickOutId, roomCode);
+        if(kickoutCount+1 == roomDAO.getRoom(roomCode).get().getUserList().size()-1) roomService.leaveRoom(kickOutId, roomCode);
 
         return CRUDStatus.APPROVED;
     }
