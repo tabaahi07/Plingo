@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.18.1'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

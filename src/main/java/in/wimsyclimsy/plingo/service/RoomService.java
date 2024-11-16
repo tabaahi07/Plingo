@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import in.wimsyclimsy.plingo.commons.RoomInfoResponse;
 import in.wimsyclimsy.plingo.commons.User;
 import in.wimsyclimsy.plingo.commons.Enums.CRUDStatus;
@@ -25,6 +23,7 @@ public class RoomService {
     @Autowired
     private UserDAO userDAO;
 
+    
     public String createRoom(String userId){
         String roomCode = UUID.randomUUID().toString();
         Room room = Room.builder()

@@ -1,6 +1,9 @@
 package in.wimsyclimsy.plingo.engine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import in.wimsyclimsy.plingo.commons.GameInfoResponse;
+import in.wimsyclimsy.plingo.commons.KickoutRequest;
 import in.wimsyclimsy.plingo.commons.PickCardRequest;
 import in.wimsyclimsy.plingo.commons.RoomInfoResponse;
 import in.wimsyclimsy.plingo.commons.ThrowCardRequest;
@@ -9,6 +12,7 @@ import in.wimsyclimsy.plingo.service.GameService;
 import in.wimsyclimsy.plingo.service.RoomService;
 import in.wimsyclimsy.plingo.service.UserService;
 
+@Service
 public class PlingoEngine implements IPlingoEngine{
 
     @Autowired
@@ -56,8 +60,8 @@ public class PlingoEngine implements IPlingoEngine{
     
 
     @Override
-    public CRUDStatus kickOut(String roomCode, String userId, String kickoutId) {
-        return gameService.kickoutUser(roomCode, userId, kickoutId);
+    public CRUDStatus kickOut(String roomCode, KickoutRequest request) {
+        return gameService.kickoutUser(roomCode, request.getUserId() , request.getKickoutId());
     }
 
 }

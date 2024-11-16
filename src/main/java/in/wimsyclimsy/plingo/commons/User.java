@@ -1,5 +1,8 @@
 package in.wimsyclimsy.plingo.commons;
 import java.util.List;
+
+import org.springframework.web.socket.WebSocketSession;
+
 import in.wimsyclimsy.plingo.game.Enums.Card;
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-@Builder
+@Builder 
 @Getter
 @Setter
 public class User {
@@ -18,4 +21,5 @@ public class User {
     private Boolean isReady;
     private List<Card> cards;
     private int kickoutCount;
+    private WebSocketSession userSession;
 }
