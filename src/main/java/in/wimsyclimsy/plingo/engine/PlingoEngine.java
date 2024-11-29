@@ -1,0 +1,67 @@
+package in.wimsyclimsy.plingo.engine;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import in.wimsyclimsy.plingo.commons.GameInfoResponse;
+import in.wimsyclimsy.plingo.commons.KickoutRequest;
+import in.wimsyclimsy.plingo.commons.PickCardRequest;
+import in.wimsyclimsy.plingo.commons.RoomInfoResponse;
+import in.wimsyclimsy.plingo.commons.ThrowCardRequest;
+import in.wimsyclimsy.plingo.commons.Enums.CRUDStatus;
+import in.wimsyclimsy.plingo.service.GameService;
+import in.wimsyclimsy.plingo.service.RoomService;
+import in.wimsyclimsy.plingo.service.UserService;
+
+@Service
+public class PlingoEngine implements IPlingoEngine{
+
+    @Autowired
+    RoomService roomService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    GameService gameService;
+
+    @Override
+    public RoomInfoResponse getRoomInfo(String roomCode) {
+        return roomService.getRoomInfo(roomCode).get();
+    }
+
+    @Override
+    public CRUDStatus leaveRoom(String roomCode, String userId) {
+        return roomService.leaveRoom(userId, roomCode) ;
+    }
+
+    @Override
+    public CRUDStatus ready(String roomCode, String userId) {
+        return userService.updateReadyStatus(userId, true);
+    }
+    
+    @Override
+    public GameInfoResponse getGameInfo(String roomCode, String userId) {
+        return gameService.getGameInfo(roomCode, userId).get();
+    }
+
+    
+    @Override
+    public void pickCard(String roomCode, PickCardRequest request) {
+        gameService.pickCard(request.getUserId() , roomCode, request.getIsOpen());
+    }
+
+    @Override
+    public void throwCard(String roomCode, ThrowCardRequest request) {
+        gameService.throwCard(request.getUserId(), roomCode, request.getThrownCard());
+    }
+
+    @Override
+    public Boolean verifyWinner(String roomCode, String userId) {
+        return gameService.verifyWinner(roomCode, userId);
+    }
+    
+
+    @Override
+    public CRUDStatus kickOut(String roomCode, KickoutRequest request) {
+        return gameService.kickoutUser(roomCode, request.getUserId() , request.getKickoutId());
+    }
+
+}
